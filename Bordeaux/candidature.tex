@@ -1,0 +1,254 @@
+\documentclass[11pt,a4paper]{moderncv}
+\moderncvtheme[blue]{classic}
+
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+% Marge aux 4 coins de la page, ici elles sont réduites pour gagner de la place
+%\usepackage[top=1.0cm, bottom=1.0cm, left=1.6cm, right=1.6cm]{geometry}
+% \usepackage[scale=0.9]{geometry}
+% Largeur de la colonne de gauche pour les dates
+\setlength{\hintscolumnwidth}{2.7cm}
+
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{graphics}
+
+%%%%%%%%%%%%%%%%%
+\usepackage{tgtermes}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{a4wide,color}
+\usepackage[final]{pdfpages} 
+\usepackage{xspace}
+\usepackage{anysize}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{pdfpages}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[final]{pdfpages} 
+\usepackage{microtype}
+\usepackage[]{mdframed}
+\definecolor{color1}{rgb}{0.22,0.45,0.70}
+\newcommand{\hl}[1]{\textbf{\textcolor{color1}{#1}}}
+\newcommand{\hln}[1]{#1}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand*{\preduc}{\approxeq}
+
+\newcommand*{\tool}[1]{\textsf{#1}\xspace}
+\newcommand*{\caesar}{\tool{C{\ae}sar.BDD}}
+\newcommand*{\its}{\tool{ITS-Tools}}
+\newcommand*{\tapaal}{\tool{TAPAAL}}
+
+\newcounter{includepdfpage}
+
+\usepackage[
+    backend=biber,
+    style=alphabetic,
+    natbib=true,
+    sortlocale=en_US,
+    url=true, 
+    doi=true,
+    eprint=false,
+    maxnames=99
+]{biblatex}
+\addbibresource{candidature.bib}
+
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map[overwrite]{
+      \perdatasource{references.bib}
+      \step[fieldset=keywords, fieldvalue={,Perhalo}, append]
+    }
+  }
+}
+
+\usepackage[title,titletoc]{appendix}
+\renewcommand{\appendixtocname}{Annexe}
+%%%%%%%%%%%%%%
+
+\newcounter{numpart}%Création d'un compteur qui s'appelle numexos
+\setcounter{numpart}{0}%initialisation du compteur
+\newcommand{\partie}[1]{%Création d'une macro ayant un paramètre
+\addtocounter{numpart}{1}%chaque fois que cette macro est appelée, elle ajoute 1 au compteur numexos
+\textbf{\\\Large{\thenumpart.\,}\,#1 \hrulefill}%Met en rouge Exercice et la valeur du compteur appelée par \thenumeexos
+}
+\rfoot{Page\ \thepage}
+
+
+\name{\Large Nicolas}{Amat}
+\title{\normalsize  Chercheur postdoctoral\\
+IMDEA Software Institute, Madrid, Espagne\\
+Né le 08/02/1997 (27 ans) à Bourges (18), nationalité française\\
+}   
+
+\phone[mobile]{(+33) 6 83 32 78 84}
+\email{nicolas.amat@imdea.org}
+\homepage{nicolasAmat.github.io}
+% \social[github]{nicolasAmat}
+\extrainfo{\faGithub\href{https://github.com/nicolasAmat}{ nicolasAmat}}
+
+
+\begin{document}
+
+
+\thispagestyle{empty}
+
+\begin{center}
+{\small Année 2024\\---\\
+\huge Candidature au poste de MCF intitulé \og informatique - automates, logique, données, vérification\fg\medbreak
+\Large(Référence Galaxie 804)\\
+\small
+---\\
+\Large Nicolas Amat \\
+\vspace{1em}
+\small Chercheur postdoctoral\\
+IMDEA Software Institute, Madrid, Espagne\\
+    Email : nicolas.amat@imdea.org\\
+---\\
+25 mars 2024}
+\end{center}
+
+\newpage
+
+\setcounter{page}{1}
+\newpage
+
+\makecvtitle
+
+Actuellement en postdoctorat à l'IMDEA Software Institute de Madrid, je
+travaille sur de nouvelles méthodes de résolution pour l'arithmétique de
+Presburger. Mes travaux de recherche s'intéressent à la théorie et aux
+applications des procédures de décision pour la vérification formelle. J'ai
+effectué ma thèse de doctorat au LAAS-CNRS à Toulouse où je travaillais sur de
+nouvelles méthodes pour exploiter des réductions de réseaux de Petri avec un
+model-checker basé sur des méthodes SMT.\\
+
+Je résume à la page 2 les points clés de mon dossier de candidature avant de
+développer chaque partie :
+\begin{itemize}
+    \item parcours (page~\pageref{sec:formation}),
+    \item production scientifique (page~\pageref{sec:recherche}), 
+    \item enseignement, ressources pédagogiques et encadrement (page~\pageref{sec:enseignements}),
+    \item rayonnement scientifique, collaborations (page~\pageref{sec:rayonnement}),
+    \item service académique et responsabilités (page~\pageref{sec:resp}),
+    \item projet de recherche (page~\pageref{sec:projet_recherche}),
+    \item projet d'enseignement (page~\pageref{sec:projet_enseignement}).\\
+\end{itemize}
+
+À la suite de ce document sont joints :
+\begin{itemize}
+  \item le rapport de soutenance de thèse (page~\pageref{soutenance.1}),
+    \item le rapport de thèse rédigé par Mme Laure Petrucci (page~\pageref{petrucci.2}),
+    \item le rapport de thèse rédigé par M. Igor Walukiewicz (page~\pageref{walukiewicz.6}),
+    \item une lettre de soutien (recherche) de mes encadrants de thèse (page~\pageref{encadrants.10}),
+    \item une lettre de soutien (recherche) de M. Fabrice Kordon (page~\pageref{kordon.12}),
+    \item une lettre de soutien (enseignement) de M. Didier Le Botlan (page~\pageref{lebotlan.14}),
+    \item une lettre de soutien (enseignement) de Mme Pauline Ribot (page~\pageref{ribot.15}).\\
+\end{itemize}
+
+\textbf{Page personnelle :} \url{https://nicolasamat.github.io/}\\
+
+\textbf{Page GitHub :} \url{https://github.com/nicolasAmat/}
+\newpage
+
+\vspace{10pt}
+\section*{Enseignement}
+\vspace{10pt}
+
+J'ai assuré un total de 146 h d'enseignements sur la période 2020--2023,
+auprès d'un public varié allant de la prépa intégrée de l'INSA au master EEA de l'UPS,
+en passant par le montage d'un TD spécifique sur les outils SMT au niveau M2.\\
+
+{\small
+\begin{tabular}{c @{\quad} p{13em} @{\qquad} c c c c}
+\toprule
+\, Niveau  & Intitulé &Formation& Nature &   \, Heures (1) \, & \, Eq. hTD (2)\,  \\
+\midrule
+\multicolumn{6}{l}{\textbf{2020-2021}}\\
+\, L1 \,& \,Algorithmique en ADA \,&\, ing. INSA  \,&\,  TD / TP \,&\, 8,75 / 15 & 19,25\\
+\midrule
+\multicolumn{6}{l}{\textbf{2021-2022}}\\
+\, M1 \,& \,SED, modélisation et analyse \,&\, univ. Toulouse III  \,&\,  TP \,&\, 32 & 21.33\\
+\, M1 \,& \,Techniques de mises en œuvre pour les SED\,&\, univ. Toulouse III  \,&\,  TP \,&\, 30 & 20\\
+\, M2 \,& \,Modèles temporels avancés \,&\, univ. Toulouse III  \,&\,  TD \,&\, 8 & 8\\
+\midrule
+\multicolumn{6}{l}{\textbf{2022-2023}}\\
+\, L1 \,& \,Algorithmique en ADA \,&\, ing. INSA  \,&\,  TD / TP \,&\, 7,5 / 15 & 18\\
+\, L3 \,& \,Expressions régulières \,&\, ing. INSA  \,&\,  TD \,&\, 5 & 5\\
+\, M1 \,& \,Programmation fonctionnelle \,&\, ing. INSA  \,&\,  TP \,&\, 11 & 7,33\\
+\, M2 \,& \,Modèles temporels avancés \,&\, univ. Toulouse III  \,&\,  TD \,&\, 8 & 8\\
+\, M2 \,& \,SAT/SMT solving \,&\, ENAC \,&\,  TD \,&\, 6& 6\\
+\bottomrule
+\end{tabular}
+}\\
+
+(1) volume horaire en fonction de la nature, (2) volume horaire en équivalent TD.
+
+\vspace{10pt}
+\section*{Publications}
+\vspace{10pt}
+
+Mes travaux ont mené à 10 publications internationales : 3 articles de revue
+(Fundamenta Informaticae, STTT et ToPNoC) et 7 articles de conférence parmi la
+conférence de référence sur les réseaux de Petri (PETRI NETS), celle de
+référence en model-checking (SPIN) et des conférences plus généralistes de rang
+A tel que TACAS et FM.
+
+\vspace{10pt}
+\section*{Logiciels}
+\vspace{10pt}
+
+J'ai développé 4 outils open source. Un de ces outils est
+\textsf{SMPT}, un model-checker de réseaux de Petri qui s'est distingué au Model
+Checking Contest (compétition internationale d'outils de model checking) en
+obtenant la médaille de bronze en 2022 et 2023 dans la catégorie
+``accessibilité''.
+
+
+
+\label{sec:cv}
+\vspace{-1cm}
+
+\newpage
+\input{./cv_detaille}
+
+\newpage
+\input{./recherche}
+
+
+\newpage
+\input{./enseignements}
+
+\newpage
+\input{./rayonnement}
+
+\newpage
+\input{./responsabilites}
+
+\newpage
+\input{./projet_recherche}
+
+
+\newpage
+\input{./projet_enseignement}
+
+\newpage
+\phantomsection\addcontentsline{toc}{section}{Rapport de soutenance de thèse}
+\includepdf[pages=-,link,linkname=soutenance,pagecommand={\refstepcounter{includepdfpage}\label{soutenance.\theincludepdfpage}}]{PDF/Rapport_soutenance.pdf}
+\phantomsection\addcontentsline{toc}{section}{Rapport de thèse de Mme Laure Petrucci}
+\includepdf[pages=-,link,linkname=petrucci,pagecommand={\refstepcounter{includepdfpage}\label{petrucci.\theincludepdfpage}}]{PDF/Rapport_Laure_Petrucci.pdf}
+\phantomsection\addcontentsline{toc}{section}{Rapport de thèse de M. Igor Walukiewicz}
+\includepdf[pages=-,link,linkname=walukiewicz,pagecommand={\refstepcounter{includepdfpage}\label{walukiewicz.\theincludepdfpage}}]{PDF/Rapport_Igor_Walukiewicz.pdf}
+\phantomsection\addcontentsline{toc}{section}{Lettre de soutien (recherche) des encadrants de thèse}
+\includepdf[pages=1-2,link,linkname=encadrants,pagecommand={\refstepcounter{includepdfpage}\label{encadrants.\theincludepdfpage}}]{PDF/Lettre_encadrants.pdf}
+\phantomsection\addcontentsline{toc}{section}{Lettre de soutien (recherche) de M. Fabrice Kordon}
+\includepdf[pages=1-2,link,linkname=kordon,pagecommand={\refstepcounter{includepdfpage}\label{kordon.\theincludepdfpage}}]{PDF/Lettre_Fabrice_Kordon.pdf}
+\phantomsection\addcontentsline{toc}{section}{Lettre de soutien (enseignement) de M. Didier Le Botlan}
+\includepdf[pages=1,link,linkname=lebotlan,pagecommand={\refstepcounter{includepdfpage}\label{lebotlan.\theincludepdfpage}}]{PDF/Lettre_Didier_Le_Botlan.pdf}
+\phantomsection\addcontentsline{toc}{section}{Lettre de soutien (enseignement) de Mme Pauline Ribot}
+\includepdf[pages=1,link,linkname=ribot,pagecommand={\refstepcounter{includepdfpage}\label{ribot.\theincludepdfpage}}]{PDF/Lettre_Pauline_Ribot.pdf}
+\end{document}

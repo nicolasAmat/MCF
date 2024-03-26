@@ -1,0 +1,425 @@
+\partie{Production scientifique}
+\label{sec:recherche}
+
+
+\vspace{10pt}
+\section*{Description synthétique de mes travaux passés}
+\vspace{10pt}
+
+Mes travaux de recherche s'intéressent à la théorie et aux applications des
+procédures de décision pour la vérification formelle. J'ai effectué ma thèse de
+doctorat au LAAS-CNRS à Toulouse où je travaillais sur de nouvelles méthodes
+pour exploiter des réductions de réseaux de Petri avec un model-checker basé sur
+des méthodes SMT. Je travaille actuellement sur l'arithmétique de Presburger
+dans le cadre d'un postdoctorat effectué à l'IMDEA Software Institute de Madrid
+
+\vspace{10pt}
+\subsection*{Thèse de doctorat}
+\vspace{10pt}
+
+
+Au cours de ma thèse de doctorat, j'ai proposé et étudié une méthode pour
+contrôler l'explosion combinatoire lors de la vérification de problèmes
+d'accessibilité sur les réseaux de Petri basée sur des réductions structurelles
+appelées réductions polyédriques~\cite{amat_combination_2021,amat_polyhedral_2022}. L'approche est basée
+sur une abstraction de l'espace d'états qui combine réductions structurelles et
+contraintes arithmétiques sur le marquage des places.\\
+
+La correction de cette méthode est basée sur une nouvelle notion d'équivalence
+comportementale entre les réseaux. Combiné avec un model-checker basé sur des
+méthodes SMT, je propose de transformer un problème d'accessibilité sur un
+réseau de Petri en la vérification d'une propriété d'accessibilité sur une
+version réduite de ce réseau~\cite{amat_combination_2021,amat_polyhedral_2022}. En exploitant un lien
+avec une classe de réseaux de Petri qui ont un ensemble d'accessibilité
+définissable par l'arithmétique de Presburger, j'ai également proposé
+une procédure automatisée pour prouver qu'une telle abstraction est
+correcte~\cite{amat_automated_2023}.\\
+
+De plus, j'ai développé une structure de données, appelée Token Flow Graph
+(TFG), qui capture la structure particulière des contraintes résultant des
+réductions polyédriques~\cite{amat_accelerating_2021,amat_leveraging_2022}. J'ai exploité les TFGs
+pour résoudre efficacement deux problèmes. Premièrement, pour éliminer les
+quantificateurs, qui apparaissent lors de notre transformation, dans la formule
+à vérifier sur le réseau réduit~\cite{amat_project_2024}. Deuxièmement, pour le
+calcul de la relation de concurrence d'un réseau, c'est-à-dire énumérer toutes
+les paires de places qui peuvent être marquées simultanément dans un marquage
+accessible. Ce travail a conduit à une collaboration avec l'équipe CONVECS de
+INRIA Grenoble~\cite{amat_toolchain_2023}.\\
+
+J'ai appliqué mon approche à plusieurs procédures de model-checking symboliques.
+Un des résultats de ce travail est la définition d'une nouvelle procédure de
+semi-décision pour la vérification de propriétés d'accessibilité sur les réseaux
+de Petri, basée sur la méthode Property Directed Reachability
+(PDR)~\cite{amat_property_2022}. Une particularité de cette méthode PDR réside
+dans sa capacité à générer des certificats de verdict en arithmétique de
+Presburger qui peuvent être vérifiés à l'aide d'un solveur SMT externe.\\
+
+Je valorise une approche de la recherche qui combine des avancées théoriques avec
+des implémentations concrètes. J'ai mis en œuvre mes résultats et mes algorithmes
+dans quatre outils open source : \textsf{SMPT} pour vérifier des propriétés
+d'accessibilité~\cite{amat_smpt_2023} ; \textsf{Kong} pour accélérer le calcul de places concurrentes~\cite{amat_kong_2022}
+; \textsf{Octant} pour l'élimination de quantificateurs ; et \textsf{Reductron} pour
+prouver automatiquement la correction de réductions polyédriques. J'ai étudié
+leur efficacité dans le cadre d'évaluations expérimentales approfondies, à la
+fois pour des réseaux bornés et non bornés, en utilisant les modèles et formules
+fournies par le Model Checking Contest
+(MCC)\footnote{\url{https://mcc.lip6.fr}}, une compétition annuelle et
+internationale pour les outils de model-checking. Cela m'a conduit à participer
+à la catégorie ``accessibilité'' des trois dernières éditions du MCC. Mon outil,
+\textsf{SMPT}, a obtenu la médaille de bronze lors des deux dernières éditions
+(2022 et 2023).
+
+\vspace{10pt}
+\subsection*{Postdoctorat}
+\vspace{10pt}
+
+Dans le cadre de mon postdoctorat réalisé à l'IMDEA Software Institute de
+Madrid, je m'intéresse à la résolution de fragments spécifiques de
+l'arithmétique de Presburger. D'un point de vue théorique, l'arithmétique de
+Presburger est connue pour être décidable. Cependant, tout comme pour le
+problème d'accessibilité sa complexité théorique (quelque part entre 2EXPTIME et
+3EXPTIME) fait de sa résolution un véritable défi. Une conséquence pratique de
+cette \og complexité inhérente \fg est qu'une stratégie intéressante consiste à
+essayer d'améliorer les performances sur certains fragments particuliers pour
+traiter de grandes formules provenant de problèmes de vérification concrets.\\
+
+Si nous nous limitons au fragment sans quantificateur (également connu sous le
+nom de Quantifier-Free Linear Integer Arithmetic, ou QF-LIA en abrégé), les
+progrès récents des solveurs SMT permettent désormais de développer des
+techniques de vérification efficaces pour le model-checking, l'interprétation
+abstraite, etc. Cependant, ce fragment n'est pas assez expressif pour de
+nombreux problèmes concrets, tels que le raisonnement sur différentes bases, la
+recherche de points fixes, ou la vérification d'interpolants, qui nécessitent
+souvent l'ajout de quantificateurs existentiels et peuvent être exprimés comme un
+problème d'inclusion entre formules.\\
+
+Dans ce contexte, je développe de nouvelles méthodes de vérification pour
+des fragments spécifiques. Un premier fragment intéressant, comme mentionné
+ci-dessus, est l'inclusion de formules existentielles. Fondamentalement,
+une formule existentielle implique-t-elle (ou est-elle équivalente à) une autre
+? Plus abstraitement, ce fragment peut être considéré comme un problème
+d'inclusion de langage.  J'ai récemment développé une approche qui repose sur
+un cadre théorique pour l'inclusion de deux langages, basé sur la notion de
+quasi-ordre, qui réduit le problème à un nombre fini de questions
+d'appartenance. 
+% Nos premiers résultats montrent que cette
+% approche innovante est plus efficace dans la pratique que les approches
+% \og géométriques\fg  plus générales.\\
+
+\vspace{10pt}
+\subsection*{Autres travaux}
+\vspace{10pt}
+
+Durant mes études à l'ENSIMAG, j'ai travaillé avec de deux mes enseignants sur
+la formalisation de la logique de séparation dans l'assistant de preuve
+Isabelle/HOL, et la preuve de résultats de réécriture de formules. Ce travail
+est disponible
+librement~\footnote{\url{https://github.com/nicolasAmat/Separation-Logic-Formalization}}.
+
+\vspace{10pt}
+\section*{Liste des publications}
+\label{sec:publications}
+\vspace{10pt}
+
+Mes travaux ont mené à 10 publications internationales (dont je suis le
+co-auteur principal) : 3 articles de revue (Fundamenta Informaticae, STTT et
+ToPNoC) et 7 articles de conférence parmi des conférences généralistes de rang A
+tel que TACAS et FM (taux d'acceptation inférieurs à 30\%), la conférence VMCAI,
+la conférence de référence sur les réseaux de Petri (PETRI NETS) et celle de
+référence en model-checking (SPIN). À noter que deux autres articles de revue
+sont en cours de publication (un accepté et un autre soumis).
+\medbreak
+
+Ci-après une liste de mes publications classées par type de communication et
+par ordre chronologique. Le symbole ($\bigstar$) indique que j'ai choisi la
+publication comme publication de référence (5 au total).
+% Le symbole ($\bigstar$) indique que j'ai choisi la
+% publication comme publication de référence (5 au total).
+
+\vspace{10pt}
+\subsection*{Revues internationales avec comité de lecture}
+\vspace{10pt}
+
+\begin{enumerate}
+  \item ($\bigstar$) \cite{amat_polyhedral_2022} \fullcite{amat_polyhedral_2022} 
+  \begin{mdframed}
+    Cet article de revue introduit le cade théorique des réductions polyédriques
+    appliquées à la vérification de propriétés d'accessibilité. J'y propose une
+    nouvelle notion d'équivalence comportementale entre les réseaux, nommée
+    \emph{équivalence polyédrique}, et je montre comment la combiner avec un
+    model-checker basé sur des méthodes SMT. Ce travail a lancé le développement
+    de mon outil \textsf{SMPT}, dans lequel j'ai appliqué mon approche à
+    plusieurs procédures de model-checking symbolique. Les résultats
+    expérimentaux ont montré que l'approche fonctionne bien sur le jeu de
+    données du Model Checking Contest (reconnu par ma communauté), même
+    lorsqu'une quantité modérée de réductions s'applique.
+  \end{mdframed}
+  \smallbreak
+  % \textcolor{gray}{\textbf{Contribution :} Dans cet article de journal j'ai
+  % défini une nouvelle méthode pour tirer parti des réductions de réseaux en
+  % combinaison avec un model checker basé sur des méthodes SMT. L'approche
+  % consiste à transformer un problème d'accessibilité sur un réseau de Petri en
+  % la vérification d'une propriété d'accessibilité sur une version réduite de ce
+  % réseau. Cette méthode repose sur une nouvelle abstraction de l'espace d'états
+  % basée sur des systèmes de contraintes, appelée reduction polyédrique. Nous
+  % prouvons la correction de cette méthode en utilisant une nouvelle notion
+  % d'équivalence entre les réseaux. Notre approche a été mise en œuvre dans un
+  % outil, appelé \textsf{SMPT}, qui fournit deux procédures principales : Bounded
+  % Model Checking (BMC) et Property Directed Reachability (PDR). Nous avons testé
+  % \textsf{SMPT} sur une large collection de problèmes utilisés au Model Checking
+  % Contest. Nos résultats expérimentaux montrent que notre approche fonctionne
+  % bien, même lorsque nous n'avons qu'une quantité modérée de réductions.}
+	
+  \item \cite{amat_leveraging_2022} \fullcite{amat_leveraging_2022} 
+  % \smallbreak
+  
+  % \textcolor{gray}{\textbf{Contributions :} Dans cet article de revue je
+	% propose une nouvelle structure de données, appelée Token Flow Graph (TFG), qui
+	% capture la structure particulière des contraintes apparaissant dans les
+	% réductions polyédriques. Nous utilisons les TFGs pour résoudre efficacement
+	% deux problèmes d'accessibilité : d'abord pour vérifier l'accessibilité d'un
+	% marquage donné et ensuite pour calculer la relation de concurrence d'un
+	% réseau, c'est-à-dire énumérer toutes les paires de places qui peuvent être
+	% marqués simultanément dans un marquage accessible. Nos algorithmes sont
+	% implantés dans un outil, appelé \textsf{Kong}, que nous évaluons sur une
+	% large collection de modèles utilisés lors du Model Checking Contest. Nos
+	% expérimentations montrent que l'approche fonctionne bien, même lorsqu'une quantité
+	% modérée de réductions s'applique.}
+  \smallbreak
+	\item ($\bigstar$) \cite{amat_toolchain_2023} \fullcite{amat_toolchain_2023}
+  \begin{mdframed}
+    Cet article publié dans la revue ToPNoC (Transactions on Petri Nets and Other
+  Models of Concurrency) est le fruit de ma collaboration avec l’équipe CONVECS de
+  INRIA Grenoble, sur le problème des places concurrentes. On y présente notre
+  approche, combinant l'outil \caesar, qui fait partie de la boîte à outils
+  \textsf{CADP}, avec les Token
+  Flow Graphs qui sont une structure de données capturant la structure
+  particulière des contraintes résultant de réductions polyédriques. Cette
+  collaboration m’a également amené à développer l’outil
+  \textsf{Kong}.
+  \end{mdframed}
+\end{enumerate}
+
+
+\vspace{10pt}
+\subsection*{Conférences internationales avec comité de lecture}
+\vspace{10pt}
+\begin{enumerate}
+  \setcounter{enumi}{3}
+  \item  \cite{amat_combination_2021} \fullcite{amat_combination_2021}
+  \smallbreak
+  \emph{Article sélectionné parmi les meilleures contributions pour être étendu en journal.}
+  \smallbreak
+  \item \cite{amat_accelerating_2021} \fullcite{amat_accelerating_2021}
+  \smallbreak
+  \emph{Article sélectionné parmi les meilleurs contributions pour être étendu en journal.}
+  \smallbreak
+  \item ($\bigstar$) \cite{amat_property_2022} \fullcite{amat_property_2022}
+  \begin{mdframed}
+    Dans cet article j'ai proposé un nouvel algorithme, qui est une procédure de
+  semi-décision pour le problème d'accessibilité basée sur la méthode Property
+  Directed Reachability (PDR), parfois aussi appelée IC3. Une caractéristique
+  distinctive de cette extension de PDR aux réseaux de Petri est sa capacité à
+  générer un \emph{certificat d'invariance}, sous la forme d'un invariant
+  inductif de Presbuger, lorsque nous constatons qu'une propriété est vérifiée
+  par tous les états accessibles. J'ai choisi de présenter cette contribution
+  car, à ma connaissance, elle est la seule méthode à fournir de tels
+  certificats de manière effective dans le cas général (bien que l'existence
+  théorique de tels certificats fût prouvée par Leroux en 2010).
+  \end{mdframed}
+  \smallbreak
+  % \textcolor{gray}{\textbf{Contributions :} Dans cet article je propose une
+  % procédure de semi-décision pour vérifier des propriétés d'accessibilité dans
+  % les réseaux de Petri, basée sur la méthode PDR (Property Directed
+  % Reachability). Nous définissons trois versions différentes, qui sont capables
+  % de traiter des problèmes d'une difficulté croissante. J'ai implanté ces
+  % méthodes dans mon model checker SMPT et nous donnons des preuves empiriques
+  % que notre approche peut traiter problèmes difficiles ou impossibles à vérifier
+  % avec les outils de l'état de l'art.}
+  % \smallbreak
+  \item \cite{amat_kong_2022} \fullcite{amat_kong_2022}
+  \smallbreak
+  \emph{Article sélectionné parmi les meilleurs contributions pour être étendu en journal.}
+  \smallbreak
+  \item ($\bigstar$) \cite{amat_smpt_2023} \fullcite{amat_smpt_2023}
+  \begin{mdframed}
+    Dans cet article je présente mon outil \textsf{SMPT} (\emph{Satisfiability
+    Modulo Petri Nets}), sous licence libre (GPLv3). \textsf{SMPT} est un
+    model-checker pour la vérification de propriétés d'accessibilité dans les
+    réseaux de Petri, basé sur des méthodes SMT. Il a la particularité de tirer
+    parti des réductions polyédriques. Cet outil a une importance particulière car
+    il est le fondement de mes travaux expérimentaux de thèse et représente plus de
+    $4\,500$ lignes de code (et $5\, 000$ lignes de commentaires et documentation). 
+  \end{mdframed}
+  \smallbreak
+  \item \cite{amat_automated_2023} \fullcite{amat_automated_2023}
+  \smallbreak
+  \emph{Article sélectionné parmi les meilleurs contributions pour être étendu en journal.}
+  \smallbreak
+  % \textcolor{gray}{\textbf{Contributions :} Dans cet article je propose une
+  % procédure automatisée pour prouver la corrections d'équivalences
+  % polyédriques pour les réseaux de Petri. Mon approche repose sur un encodage
+  % en un ensemble de formules SMT dont la satisfaction implique que l'équivalence
+  % est correcte. La difficulté, dans ce contexte, provient du fait que nous devons
+  % traiter des systèmes à états infinis. Pour la complétude, nous exploitons un
+  % lien avec une classe de réseaux de Petri qui ont un ensemble d'accessibilité
+  % définissables par l'arithmétique de Presburger. J'ai implanté
+  % cette procédure dans un outil appelé \textsf{Reductron}.}
+  % \smallbreak
+  \item ($\bigstar$) \cite{amat_project_2024} \fullcite{amat_project_2024}
+  \begin{mdframed}
+    Cet article est représentatif de mon projet de recherche, mêlant vérification
+  formelle et raisonnement automatisé. J'y ai proposé une méthode pour vérifier
+  des propriétés d'accessibilité dans les réseaux de Petri en tirant parti de
+  réduction polyédrique de manière transparente, comme une étape de prétraitement
+  pour n'importe quel outil de model-checking. Mon approche est basée sur une
+  nouvelle procédure qui peut projeter une propriété, d'un réseau de Petri
+  initial, en une formule équivalente qui ne fait référence qu'à sa version
+  réduite. Cette projection est définie comme une procédure d'élimination de
+  quantificateurs pour l'arithmétique de Presburger, adaptée au fragment
+  spécifique résultant de réductions. Les résultats expérimentaux ont montré
+  que (1) sur notre fragment, mon outil de projection \textsf{Octant} est
+  plus efficace que les outils généraux pour l'arithmétique de Presburger ; et (2)
+  les réductions polyédriques sont efficaces sur un grand nombre de propriétés
+  d'accessibilité, orthogonales aux optimisations existantes et que leurs
+  avantages se combinent avec d'autres optimisations et model-checkers.
+  \end{mdframed}
+\end{enumerate}
+
+\vspace{10pt}
+% \vspace{1em}
+\subsection*{Preprints}
+\vspace{10pt}
+\begin{enumerate}
+  \setcounter{enumi}{10}
+  \item \fullcite{preprint_1}\smallbreak
+  \item \fullcite{preprint_2}
+\end{enumerate}
+
+
+
+\vspace{10pt}
+% \vspace{1em}
+\subsection*{Poster}
+\vspace{10pt}
+\begin{enumerate}
+  \setcounter{enumi}{12}
+  \item \fullcite{poster}
+\end{enumerate}
+\vspace{10pt}
+
+
+\section*{Logiciels}
+\vspace{10pt}
+J'assure le développement et la maintenance de 4 outils open source (licence
+GPLv3), en liens directs avec mes travaux de thèse, que je décris ci-dessous.
+Pour chaque logiciel, la page GitHub correspondante contient le manuel
+d'utilisation.
+
+\vspace{10pt}
+
+\begin{enumerate}
+  \setcounter{enumi}{13}
+  \item \textbf{SMPT: The Satisfiability Modulo Petri Nets Model Checker.}
+  \smallbreak
+  \url{https://github.com/nicolasAmat/SMPT}
+  \smallbreak
+  Un model-checker basé sur des méthodes SMT pour les réseaux de Petri, axé sur
+  les problèmes d'accessibilité, qui tire parti de réductions polyédriques.
+  \textsf{SMPT} a participé aux trois dernières éditions du Model Checking
+  Contest dans la catégorie \og accessibilité \fg et a obtenu la médaille de bronze
+  en 2022 et 2023.
+  \smallbreak
+  \emph{Environ $4\ 500$ lignes de code et $5\, 000$ lignes de commentaire.}
+  \smallbreak
+  \item \textbf{Octant: The Reachability Formula Projector.}
+  \smallbreak
+  \url{https://github.com/nicolasAmat/Octant}
+  \smallbreak
+  Un outil pour projeter des propriétés d'accessibilité d'un réseaux de Petri
+  sur sa version réduite. Cet outil est utilisé dans le fonctionnement interne
+  du model-checker \textsf{SMPT}.
+  \smallbreak
+  \emph{Environ $1\,500$ lignes de code.}
+  \smallbreak
+
+  \item \textbf{Kong: The Koncurrent Places Grinder.}
+  \smallbreak
+  \url{https://github.com/nicolasAmat/Kong}
+  \smallbreak
+  Un outil pour accélérer le calcul de la relation de concurrence d'un réseau de
+  Petri en utilisant des réductions polyédriques. Cet outil a été réalisé dans
+  le cadre d'une collaboration avec l'équipe CONVECS de INRIA Grenoble.
+  \smallbreak
+  \emph{Environ $1\ 000$ lignes de code.}
+  \smallbreak
+  \item \textbf{Reductron: The Polyhedral Abstraction Prover.}
+  \smallbreak
+  \url{https://github.com/nicolasAmat/Reductron}
+  \smallbreak
+  Un outil pour prouver automatiquement la correction d'équivalences
+  polyédriques pour les réseaux de Petri.
+  \smallbreak
+  \emph{Environ $1\ 000$ lignes de code.}
+\end{enumerate}
+\vspace{10pt}
+
+
+
+\section*{Science ouverte}
+\vspace{10pt}
+J'accorde une grande importance aux aspects \og science ouverte \fg dans mes travaux
+de recherche. Cela s'est traduit par la développement de quatre outils open
+source (décrits précédemment), la production de jeux de données, la mise à
+disposition d'artefacts pour faciliter la reproduction de mes résultats et la
+participation aux trois dernières éditions du Model Checking Contest, une
+compétition internationale d'outils de model-checking pour la vérification de
+systèmes concurrents. Ci-dessous je liste ces contributions.
+
+\vspace{10pt}
+\subsection*{Jeux de données}
+\vspace{10pt}
+J'ai contribué à la proposition de plusieurs modèles utilisés dans le benchmark du Model Checking Contest, en 
+définissant trois modèles. J'ai également soumis une base de donnée de formules ajoutées au répertoire SMT-LIB
+utilisé durant la compétition SMT-COMP.
+\vspace{10pt}
+\begin{enumerate}
+  \setcounter{enumi}{17}
+  \item \fullcite{amat_cryptominer_2023}\smallbreak
+  \item \fullcite{amat_pgcd_2023}\smallbreak
+  \item \fullcite{amat_murphy_2023}\smallbreak
+  \item \fullcite{amat_qf-lia_2023}
+\end{enumerate}
+
+\vspace{10pt}
+\subsection*{Artefacts}
+\vspace{10pt}
+
+J'ai fourni trois artefacts sur la plateforme \textsf{Zenodo}, pour les
+conférences ayant une évaluation d'artefacts dans leur processus de soumission
+(TACAS, FM et VMCAI). J'ai également produit un artefact couvrant l'ensemble de
+mes travaux de thèse. L'objectif de ces artefacts est de permettre à la
+communauté de reproduire mes résultats expérimentaux ainsi que de fournir un
+environnement fonctionnel pour mes outils.
+\vspace{10pt}
+\begin{enumerate}
+  \setcounter{enumi}{21}
+  \item \fullcite{zenodo_artifact_2022}\smallbreak
+  \item \fullcite{zenodo_artifact_2023}\smallbreak
+  \item \fullcite{zenodo_artifact_2024}\smallbreak
+  \item \fullcite{zenodo_artifact}
+\end{enumerate}
+% \newpage
+
+\vspace{10pt}
+\subsection*{Compétition}
+\vspace{10pt}
+
+Ci-dessous je liste les références à mes trois participations au Model Checking Contest.
+\vspace{10pt}
+\begin{enumerate}
+  \setcounter{enumi}{25}
+  \item \textbf{2021.} \fullcite{kordon_complete_2021}\smallbreak
+  \item \textbf{2022.} \fullcite{kordon_complete_2022}\smallbreak
+  \item \textbf{2023.} \fullcite{kordon_complete_2023}
+\end{enumerate}

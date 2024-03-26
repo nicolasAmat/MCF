@@ -1,0 +1,198 @@
+\partie{Projet de recherche}
+\label{sec:projet_recherche}
+\vspace{10pt}
+
+% Cette section débute par une introduction générale décrivant le problème
+% théorique au centre de mon projet, ainsi que l'approche que je souhaite
+% développer. La seconde partie est une description plus technique de mon projet
+% de recherche et de mes objectifs. Le projet est suivi (Section~3) par une série
+% de problèmes connexes, envisageables à court terme. Je termine la présentation
+% de mon projet dans la Section~4 par une discussion sur les opportunités
+% d'ouvertures, le type de modèles considérés et sur des problématiques de
+% confiance dans les méthodes de vérification, démontrant le champ applicatif
+% varié d'un tel projet. Le document se conclut par mon projet d'intégration dans
+% l'équipe MTV du département M2F.
+
+% \vspace{10pt}
+% \section{Introduction et état de l'art}
+% \vspace{10pt}
+
+% Pour maîtriser la complexité toujours plus grande des \hl{systèmes critiques},
+% il est nécessaire d'améliorer les méthodes et outils d'ingénierie des systèmes.
+% La défaillance de tels systèmes peut avoir un impact négatif majeur sur la
+% société, tant sur le plan financier qu'humain. Les \hl{méthodes formelles}
+% offrent une réponse partielle à ce problème par l'utilisation d'une base
+% mathématique solide, l'existence de techniques de vérification automatiques et
+% la mise à disposition d'outils performants pour supporter ces techniques.\\
+
+Dans mon projet de recherche je souhaite m'intéresser à la vérification par
+modèles (ou \hl{{model-checking}}) qui est une technique de vérification
+formelle définissant un ensemble de méthodes algorithmiques permettant de
+déterminer si un \hln{modèle abstrait} satisfait une \hln{spécification
+formelle}, généralement exprimée sous la forme d'une formule de logique
+temporelle. Cette technique de vérification s'utilise aux différents stades de
+développement des systèmes (conception, architecture, \dots) et se base,
+sommairement, sur la construction de l'ensemble des états dans lesquels peut se
+trouver le système ou sur des techniques de raisonnement symboliques. Un axe
+majeur d'amélioration de ces outils concerne le \hl{passage à l'échelle},
+c'est-à-dire la capacité à appliquer ces outils sur des systèmes dont la taille
+et la complexité rendaient jusqu'ici l'analyse impossible.\\
+
+Je souhaite aborder particulièment le problème de la vérification de
+\hl{propriétés d'accessibilité} pour des programmes et des systèmes concurrents.
+La question est de savoir si un état donné ou une classe d'états, peut être
+atteint par le modèle d'un tel système. L'accessibilité est un problème
+\hln{fondamental et difficile}\footnote{Voir l'article de vulgarisation de la
+revue Quanta :\\
+\url{https://www.quantamagazine.org/an-easy-sounding-problem-yields-numbers-too-big-for-our-universe-20231204/}},
+avec de nombreuses \hln{applications pratiques}. Elle joue évidemment un rôle
+important dans la vérification formelle des systèmes concurrents, par exemple
+pour tester l'absence \og d'états dangereux\fg, tels que les blocages, ou pour
+tester qu'un invariant est préservé. Ce problème est utilisé pour étudier divers
+types de systèmes, tels que des systèmes
+logiciels,
+des protocoles et des systèmes distribués, des systèmes
+biologiques, des
+workflows, etc.\\
+
+Le choix d'un formalisme particulier n'est pas nécessairement le facteur
+dominant en model-checking. En effet, il est souvent possible de traduire ou
+d'interpréter un modèle d'un formalisme à un autre. Mon projet s'intéresse aux
+modèles concurrents, dont la sémantique (relation de transition) peut être
+encodée dans \hl{l'arithmétique de Presburger} (théorie du premier ordre des
+nombres entiers naturels munis de l'addition). Dans ce document je prends pour
+exemple les \hl{réseaux de Petri (RdP)}, que j'ai étudié durant ma thèse de
+doctorat, ainsi que leurs \hln{extensions}, qui sont l'un des premiers modèles
+proposés pour l'étude de la \hl{théorie de la concurrence}. Enfin, certains RdP
+peuvent avoir un nombre non borné d'états accessibles, ce qui n'est pas la norme
+avec d'autres formalismes. Dans ce cas, le problème de l'accessibilité fournit
+un cas d'utilisation intéressant pour l'analyse des \hl{systèmes à états
+infinis}. Dans mes travaux futurs, je souhaite continuer à développer des
+méthodes adaptées aux réseaux non bornés.\\
+
+% Chaque théorie a aussi ses caractéristiques propres et, parfois, ses approches
+% dédiées. En règle générale, la théorie des réseaux de Petri accorde une même
+% importance aux états et aux événements, alors que les algèbres de
+% processus~\cite{hoare_communicating_1978,milner_calculus_1980}, par exemple,
+% tentent d'abstraire la notion d'état pour se concentrer plutôt sur les
+% événements et des notions d'équivalences comportementales.
+% %%
+
+
+Un aspect essentiel lié à l'étude des réseaux de Petri consiste à
+s'appuyer largement sur les techniques de \hl{programmation linéaire en nombres
+entiers}, avec des concepts spécifiques tel que l'\emph{équation d'état} ou
+l'utilisation d'\emph{invariants structurels} par exemple. Ce point est central
+dans mon projet, situé à la frontière entre méthodes de résolution pour
+l'\hl{arithmétique de Presburger} et développement de techniques de
+model-checking.
+
+\begin{mdframed}
+  \textbf{\textbf{Axe de recherche 1:}} Développer des techniques de vérification pour les réseaux
+  de Petri, les modèles associés (tels que les VASS) et leurs extensions, en tirant parti de leur relation étroite avec
+  l'arithmétique de Presburger.
+\end{mdframed}
+
+Dans le cas général, le problème de l'accessibilité est un des problèmes
+décidables les plus \hln{complexes} (\hln{Ackermann-complet}) lié à l'étude des
+RdP. Une conséquence pratique de cette \og complexité inhérente\fg, et un
+consensus au sein de la communauté Petri, est que nous ne devrions pas nous
+attendre à trouver un algorithme unique utilisable en pratique. \\
+
+Une meilleure stratégie consiste à essayer d'améliorer les performances dans
+certains cas, par exemple en développant de nouveaux outils ou des optimisations
+spécifiques à certains cas ; ou bien essayer d'étendre la classe de problèmes
+que nous pouvons traiter. Cette situation reflète un problème équivalent dans le
+domaine des solveurs SMT.\\
+
+Ce constat est illustré par l'état de l'art actuel au Model Checking Contest
+(MCC). En effet, les trois meilleurs outils des derniers
+concours---\textsf{ITS-Tools},
+\textsf{TAPAAL}, et \textsf{SMPT}~\cite{amat_smpt_2023}
+(que je développe)---s'appuient tous sur un portfolio d'approches, et mélangent
+différentes méthodes.
+
+\begin{mdframed}
+  \textbf{\textbf{Axe de recherche 2:}} S'attaquer au problème d'accessibilité
+  par le développement d'outils
+  concrets, dans le but de réduire l'écart entre décidabilité théorique et
+  faisabilité pratique.
+\end{mdframed}
+
+Les premiers model-checkers symboliques étaient basés sur les \hl{diagrammes de
+décision binaires (BDD)}, une structure de données capable de représenter
+efficacement la table de vérité des fonctions booléennes et donc aussi des
+ensembles de vecteurs booléens. Cependant, ces techniques sont \hln{limitées aux
+réseaux bornés} et, en pratique, ne sont pas à la hauteur des \hl{approches
+basées SMT} (pour \emph{Satisfaisabilité Modulo Théories}), voir les résultats
+lors des compétitions d'outils~\footnote{\url{https://mcc.lip6.fr/2023/
+results.php}}.\\
+
+Dans ce contexte, il est naturel de chercher à développer des techniques de
+déduction automatique, du type solveurs SMT, qui permettent de décider des
+propriétés reposant sur la théorie de l'arithmétique linéaire sur les entiers
+(ou bien des structures telles que les vecteurs de bits, qui permettent de coder
+des ensembles d'entiers bornés).
+%%
+En effet, les progrès réalisés par les \hln{solveurs SMT} ces dernières années
+ont conduit à une \hln{avancée significative} des outils de \hln{vérification}.
+Néanmoins, les solveurs restent parfois trop généraux et gagneraient à être
+\hln{adaptés} et \hln{optimisés} pour des \hln{problèmes spécifiques}. Dans ce
+contexte, j'envisage de développer des \hl{solveurs spécifiques} et des
+procédures de décision qui prennent mieux en compte les \hln{formalismes
+sous-jacents}.\\
+
+C'est cette thématique de recherche, à la frontière de \hln{deux communautés} :
+celle de la \hl{vérification formelle} et celle du \hl{raisonnement automatisé},
+que je vais développer dans la suite de ce document et qui explique mon choix de
+sujet de postdoctorat (méthodes de résolution pour l'arithmétique de
+Presburger). Dans mon projet, je défends également une approche qui mêle
+avancées théoriques et implantations pratiques ; que j'aime appeler des \og théorèmes qui
+s'exécutent\fg.\\
+
+
+\begin{mdframed}
+    \textbf{\textbf{Axe de recherche 3:}} Approfondir les interactions entre
+    raisonnement automatisé et vérification formelle en mêlant avancées
+    théoriques et approche logicielle.
+\end{mdframed}
+
+L'objectif de ce projet est de concevoir de
+nouvelles techniques efficaces de vérification automatique combinant des
+approches de type model-checking avec des techniques et résultats issus du
+domaine du raisonnement automatisé, en particulier de la \emph{Satisfaisabilité
+Modulo Théories} (SMT). Ce projet est motivé par l'aspect central que tient
+l'utilisation de l'arithmétique de Presburger dans l'analyse des propriétés
+des réseaux de Petri. 
+Ces résultats et outils pourraient avoir des applications dans plusieurs
+domaines ; pour le \hln{model-checking} évidemment, mais aussi pour résoudre des
+problèmes survenant dans la \hl{planification} et l'\hl{analyse
+d'ordonnancement}.
+
+\vspace{10pt}
+\section*{Intégration}
+\vspace{10pt}
+
+Je souhaite intégrer l'équipe MTV (\emph{Modelling and Technologies for
+Verification}) du département M2F (\emph{Méthodes et Modèles Formels}).
+
+Mon projet de recherche se base sur la relation étroite entre les réseaux de
+Petri et l'arithmétique de Presburger, une relation qui a été explorée par 
+Jérôme Leroux, directeur de recherche dans l'équipe, et sur laquelle il a proposé
+plusieurs résultats que j'utilise.\\
+
+Mon  projet de recherche mêle également abondamment recherche théorique et
+développement logiciel. Une collaboration sur le développement d'un outil de
+model-checking avec Frédéric Herbreteau et Gérald Point, qui maintiennent
+l'outil TChecker, permettrait de mettre en œuvre les aspects pratiques de mon
+projet de recherche, notamment sur les aspects temporisés.\\
+
+Sur les aspects plus théoriques, des interactions avec Igor
+Walukiewicz et Grégoire Sutre sont envisageables, étant donné leurs expertises
+sur des problèmes liés à l'utilisation de la logique, des automates et des
+problèmes d'accessibilité, qui font également partie de mes centres d'intérêt.\\
+
+Pour finir, des interactions avec les autres équipes du département M2F au sein
+du groupe de travail \og preuve \fg seraient également un atout pour mon projet
+de recherche, de part sa dualité vérification formelle et raisonnent automatisé,
+mais aussi pour ses aspects certifications et preuve d'invariants.
