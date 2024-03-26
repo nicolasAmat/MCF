@@ -31,7 +31,14 @@
 \usepackage{booktabs}
 \usepackage[final]{pdfpages} 
 \usepackage{microtype}
-\usepackage[]{mdframed}
+\usepackage[framemethod=tikz]{mdframed} 
+\usepackage{tablefootnote} 
+\makeatletter 
+\AfterEndEnvironment{mdframed}{%
+ \tfn@tablefootnoteprintout% 
+ \gdef\tfn@fnt{0}% 
+}
+\makeatother 
 \definecolor{color1}{rgb}{0.22,0.45,0.70}
 \newcommand{\hl}[1]{\textbf{\textcolor{color1}{#1}}}
 \newcommand{\hln}[1]{#1}
