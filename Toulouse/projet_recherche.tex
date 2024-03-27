@@ -2,7 +2,7 @@
 \label{sec:projet_recherche}
 \vspace{10pt}
 
-\hl{Vérification de modèles d’un point de vue solveur}
+\hl{\underline{Vérification de modèles d’un point de vue solveur}}
 \vspace{10pt}
 % Cette section débute par une introduction générale décrivant le problème
 % théorique au centre de mon projet, ainsi que l'approche que je souhaite
@@ -124,6 +124,30 @@ Presburger). Dans mon projet, je défends également une approche qui mêle
 avancées théoriques et implantations pratiques ; que j'aime appeler des \og
 théorèmes qui s'exécutent\fg.\\
 
+\hl{\underline{Ouverture du projet :}} Il est envisageable d'étendre ce projet à
+d'autres formalismes en incluant des extensions permettant de raisonner sur des
+systèmes incluant des \hl{contraintes temporelles}, par exemple, respect de
+durées minimales ou maximales des tâches à exécuter, durée d'attente entre des
+opérations élémentaires, temps d'acheminement d'éléments dans les systèmes, etc.
+Les réseaux de Petri temporisés sont largement utilisés par la communauté des
+\hl{systèmes à évènements discrets (SED)} pour modéliser de telles contraintes.
+Une autre piste d'extensions est d'étudier les langages de \hl{spécification
+avec des types de données}. Par exemple, développer des procédures spécialisées
+pour les \hln{réseaux de Petri colorés}, où des informations sont attachées à
+chaque jeton et où ces informations peuvent être inspectées ou modifiées
+lorsqu'une transition se déclenche. Outre les extensions à d'autre formalises,
+j'accorde une importance particulière à la \hl{confiance} que nous pouvons avoir
+dans les outils de vérification. Cela se traduit dans mon projet par la volonté
+de réaliser des \hl{implantations logicielles} solides et concrètes, mais aussi
+par l'étude de \hln{certificats d'invariance}, comme j'ai pu le proposer dans
+mes travaux thèse, apportant de nouvelles garanties. Grâce à mon expérience de
+la formalisation de la logique de séparation dans l'assistant de preuve
+Isabelle/HOL, je suis convaincu que la \hl{certification} est un axe
+intéressant. Par exemple, une version certifiée en Coq de l'algorithme de
+couverture de Karp et Miller a très récemment été proposée\footnote{ Thibault
+Hilaire, David Ilcinkas and Jérôme Leroux. \textit{A State-of-the-Art
+Karp-Miller Algorithm Certified in Coq}. À paraître à TACAS 2024.}. 
+
 
 % L'objectif de ce projet est de concevoir de
 % nouvelles techniques efficaces de vérification automatique combinant des
@@ -169,30 +193,32 @@ théorèmes qui s'exécutent\fg.\\
 \section*{Intégration}
 \vspace{10pt}
 
-Je souhaite intégrer l'équipe MTV (\emph{Modelling and Technologies for
-Verification}) du département M2F (\emph{Méthodes et Modèles Formels}).\\
+Je souhaite intégrer l'équipe ACADIE (\emph{Assistance à la Certification
+d’Applications DIstribuées et Embarquées}) du département FSL (\emph{Fiabilité
+des Systèmes et des Logiciels}). Mon projet de recherche est en adéquation avec
+les axes de recherche du groupe \emph{vérification de systèmes distribués
+critiques}.\\
 
-Mon projet de recherche se base sur la relation étroite entre les réseaux de
-Petri et l'arithmétique de Presburger, une relation qui a été explorée par
-Jérôme Leroux, directeur de recherche dans l'équipe, et sur laquelle il a
-proposé plusieurs résultats que j'utilise. Ces résultats théoriques sont souvent
-le fruit de collaborations avec Wojciech Czerwiński, Slawek Lasota, Ranko Lazic
-et Filip Mazowiecki, tous chercheurs à l'Université de Varsovie. Un tel projet
-de recherche s'insererait donc dans cette relation privilégiée entre le LaBRI et
-l'Université de Varsovie.\\
+Mon projet de recherche se base l'étude et l'analyse de systèmes à états
+infinis, je pense que des collaborations avec Jean-Paul Bodeveix et Mamoun
+Filali seraient un atout. De plus, leur expertise sur les automates, ainsi que
+les extensions temporisées, permettrait d'étendre mon projet à d'autres
+formalismes que les réseaux de Petri.\\
 
-Ce projet mêle également abondamment recherche théorique et
-développement logiciel. Une collaboration sur le développement d'un outil de
-model-checking avec Frédéric Herbreteau et Gérald Point, qui maintiennent
-l'outil TChecker, permettrait de mettre en œuvre les aspects pratiques de mon
-projet de recherche, notamment sur des aspects temporisés.\\
+Sur les d'autres aspects théoriques, d'autres intéractions sont envisageables, comme
+avec Ralph Matthes étant donné son expertise sur des problèmes liés à
+l'utilisation de la logique et des graphes, ou bien, Jean-Baptiste Raclet et
+Martin Strecker sur la théorie des automates et des graphes. Toutes
+ces thématiques font partie de mes centres d'intérêt.\\
 
-Sur les aspects plus théoriques, des interactions avec Igor
-Walukiewicz et Grégoire Sutre sont envisageables, étant donné leurs expertises
-sur des problèmes liés à l'utilisation de la logique, des automates et des
-problèmes d'accessibilité, qui font également partie de mes centres d'intérêt.\\
+Pour finir, des interactions avec Érik Martin-Dorel et Jan-Georg Smaus seraient
+également un atout pour mon projet de recherche, de par sa dualité vérification
+formelle et raisonnent automatisé, mais aussi pour développer des aspects de
+certification.\\
 
-Pour finir, des interactions avec les autres équipes du département M2F au sein
-du groupe de travail \og preuve \fg seraient également un atout pour mon projet
-de recherche, de part sa dualité vérification formelle et raisonnent automatisé,
-mais aussi pour développer des aspects de certification et de preuve d'invariants.
+Ce projet mêle également abondamment recherche théorique et développement
+logiciel, ce qui permettrait de renforcer l'équipe sur les aspects génie
+logiciel.\\
+
+
+
