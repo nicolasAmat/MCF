@@ -32,8 +32,8 @@ modèles (ou \hl{{model-checking}}) qui est une technique de vérification
 formelle définissant un ensemble de méthodes algorithmiques permettant de
 déterminer si un \hln{modèle abstrait} satisfait une \hln{spécification
 formelle}, généralement exprimée sous la forme d'une formule de logique
-temporelle. Cette technique de vérification s'utilise aux différents stades de
-développement des systèmes (conception, architecture, \dots) et se base,
+temporelle. Cette technique de vérification s'utilise aux \hl{différents stades de
+développement des systèmes} (conception, architecture, \dots) et se base,
 sommairement, sur la construction de l'ensemble des états dans lesquels peut se
 trouver le système ou sur des techniques de raisonnement symboliques. Un axe
 majeur d'amélioration de ces outils concerne le \hl{passage à l'échelle},
@@ -48,7 +48,7 @@ atteint par le modèle d'un tel système. L'accessibilité est un problème
 revue Quanta :\\
 \url{https://www.quantamagazine.org/an-easy-sounding-problem-yields-numbers-too-big-for-our-universe-20231204/}},
 avec de nombreuses \hln{applications pratiques}. Elle joue évidemment un rôle
-important dans la vérification formelle des systèmes concurrents, par exemple
+important dans la \hl{vérification formelle des systèmes concurrents}, par exemple
 pour tester l'absence \og d'états dangereux\fg, tels que les blocages, ou pour
 tester qu'un invariant est préservé. Ce problème est utilisé pour étudier divers
 types de systèmes, tels que des systèmes
@@ -95,9 +95,7 @@ Historiquement les premiers model-checkers symboliques étaient basés sur les
 représenter efficacement la table de vérité des fonctions booléennes et donc
 aussi des ensembles de vecteurs booléens. Cependant, ces techniques sont
 \hln{limitées aux réseaux bornés} et, en pratique, ne sont pas à la hauteur des
-\hl{approches basées SMT} (pour \emph{Satisfaisabilité Modulo Théories}), voir
-les résultats lors des compétitions
-d'outils~\footnote{\url{https://mcc.lip6.fr/2023/results.php}}.\\
+\hl{approches basées SMT} (pour \emph{Satisfaisabilité Modulo Théories}).\\
 
 Dans ce contexte, il est naturel de chercher à développer des techniques de
 déduction automatique, du type solveurs SMT, qui permettent de décider des
@@ -178,10 +176,10 @@ Mon projet de recherche se base sur la relation étroite entre les réseaux de
 Petri et l'arithmétique de Presburger, une relation qui a été explorée par
 Jérôme Leroux, directeur de recherche dans l'équipe, et sur laquelle il a
 proposé plusieurs résultats que j'utilise. Ces résultats théoriques sont souvent
-le fruit de collaborations avec Wojciech Czerwiński, Slawek Lasota et Ranko
-Lazic, tous chercheurs à l'Université de Varsovie. Un tel projet de recherche
-s'insererait donc dans cette relation privilégiée entre le LaBRI et l'Université
-de Varsovie.\\
+le fruit de collaborations avec Wojciech Czerwiński, Slawek Lasota, Ranko Lazic
+et Filip Mazowiecki, tous chercheurs à l'Université de Varsovie. Un tel projet
+de recherche s'insererait donc dans cette relation privilégiée entre le LaBRI et
+l'Université de Varsovie.\\
 
 Ce projet mêle également abondamment recherche théorique et
 développement logiciel. Une collaboration sur le développement d'un outil de
