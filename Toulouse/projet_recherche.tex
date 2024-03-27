@@ -38,9 +38,9 @@ sommairement, sur la construction de l'ensemble des états dans lesquels peut se
 trouver le système ou sur des techniques de raisonnement symboliques. Un axe
 majeur d'amélioration de ces outils concerne le \hl{passage à l'échelle},
 c'est-à-dire la capacité à appliquer ces outils sur des systèmes dont la taille
-et la complexité rendaient jusqu'ici l'analyse impossible.\\
+et la complexité rendent jusqu'ici l'analyse impossible.\\
 
-Je souhaite aborder particulièment le problème de la vérification de
+Je souhaite aborder particulièrement le problème de la vérification de
 \hl{propriétés d'accessibilité} pour des programmes et des systèmes concurrents.
 La question est de savoir si un état donné ou une classe d'états, peut être
 atteint par le modèle d'un tel système. L'accessibilité est un problème
@@ -63,7 +63,7 @@ d'interpréter un modèle d'un formalisme à un autre. Dans mon projet je souhai
 m'intéresser aux modèles concurrents dont la sémantique (relation de transition)
 peut être encodée dans \hl{l'arithmétique de Presburger} (théorie du premier
 ordre des nombres entiers naturels munis de l'addition). Un exemple sont les
-\hl{réseaux de Petri (RdP)}, que j'ai étudié durant ma thèse de doctorat, ainsi
+\hl{réseaux de Petri (RdP)}, que j'ai étudiés durant ma thèse de doctorat, ainsi
 que leurs \hln{extensions}, qui sont l'un des premiers modèles proposés pour
 l'étude de la \hl{théorie de la concurrence}. Notons que certains RdP peuvent
 avoir un nombre non borné d'états accessibles, ce qui n'est pas la norme avec
@@ -72,22 +72,21 @@ d'utilisation intéressant pour l'analyse des \hl{systèmes à états infinis}. 
 mes travaux futurs, je souhaite donc continuer à développer des méthodes de
 vérification adaptées aux réseaux non bornés.\\
 
-Dans le cas général, le problème de l'accessibilité est un des problèmes
-décidables les plus \hln{complexes} (\hln{Ackermann-complet}) lié à l'étude des
-RdP. Une conséquence pratique de cette \og complexité inhérente\fg, et un
-consensus au sein de la communauté Petri, est que nous ne devrions pas nous
-attendre à trouver un algorithme unique utilisable en pratique.
-Une meilleure stratégie consiste à essayer d'améliorer les performances dans
-certains cas, par exemple en développant de nouveaux outils ou des optimisations
-spécifiques à certains cas ; ou bien essayer d'étendre la classe de problèmes
-que nous pouvons traiter. 
+Dans le cas général, le problème de l'accessibilité dans les RdP est l'un des
+problèmes décidables les plus complexes puisqu'il est Ackermann-complet. Une
+conséquence pratique de cette \og complexité inhérente \fg qui fait consensus au
+sein de la communauté Petri est que nous ne devrions pas nous attendre à trouver
+un algorithme unique utilisable en pratique. Une meilleure stratégie consiste à
+essayer d'améliorer les performances dans certains cas, par exemple en
+développant de nouveaux outils ou des optimisations spécifiques à certains cas ;
+ou bien essayer d'étendre la classe de problèmes que nous pouvons traiter. 
 % Cette situation reflète un problème équivalent dans le
 % domaine des solveurs SMT.
 Ce constat est illustré par l'état de l'art actuel au Model Checking Contest
 (MCC). En effet, les trois meilleurs outils des derniers
 concours---\textsf{ITS-Tools},
 \textsf{TAPAAL}, et \textsf{SMPT}~\cite{amat_smpt_2023}
-(que je développe)---s'appuient tous sur un portfolio d'approches, et mélangent
+(que je développe)---s'appuient tous sur un portfolio d'approches et mélangent
 différentes méthodes.\\
 
 Historiquement les premiers model-checkers symboliques étaient basés sur les
@@ -95,7 +94,7 @@ Historiquement les premiers model-checkers symboliques étaient basés sur les
 représenter efficacement la table de vérité des fonctions booléennes et donc
 aussi des ensembles de vecteurs booléens. Cependant, ces techniques sont
 \hln{limitées aux réseaux bornés} et, en pratique, ne sont pas à la hauteur des
-\hl{approches basées SMT} (pour \emph{Satisfaisabilité Modulo Théories}).\\
+\hl{approches basées SMT} (\emph{Satisfaisabilité Modulo Théories}).\\
 
 Dans ce contexte, il est naturel de chercher à développer des techniques de
 déduction automatique, du type solveurs SMT, qui permettent de décider des
@@ -122,31 +121,7 @@ que je souhaite développer dans mes travaux de recherche et qui explique mon
 choix de sujet de postdoctorat (méthodes de résolution pour l'arithmétique de
 Presburger). Dans mon projet, je défends également une approche qui mêle
 avancées théoriques et implantations pratiques ; que j'aime appeler des \og
-théorèmes qui s'exécutent\fg.\\
-
-\hl{\underline{Ouverture du projet :}} Il est envisageable d'étendre ce projet à
-d'autres formalismes en incluant des extensions permettant de raisonner sur des
-systèmes incluant des \hl{contraintes temporelles}, par exemple, respect de
-durées minimales ou maximales des tâches à exécuter, durée d'attente entre des
-opérations élémentaires, temps d'acheminement d'éléments dans les systèmes, etc.
-Les réseaux de Petri temporisés sont largement utilisés par la communauté des
-\hl{systèmes à évènements discrets (SED)} pour modéliser de telles contraintes.
-Une autre piste d'extensions est d'étudier les langages de \hl{spécification
-avec des types de données}. Par exemple, développer des procédures spécialisées
-pour les \hln{réseaux de Petri colorés}, où des informations sont attachées à
-chaque jeton et où ces informations peuvent être inspectées ou modifiées
-lorsqu'une transition se déclenche. Outre les extensions à d'autre formalises,
-j'accorde une importance particulière à la \hl{confiance} que nous pouvons avoir
-dans les outils de vérification. Cela se traduit dans mon projet par la volonté
-de réaliser des \hl{implantations logicielles} solides et concrètes, mais aussi
-par l'étude de \hln{certificats d'invariance}, comme j'ai pu le proposer dans
-mes travaux thèse, apportant de nouvelles garanties. Grâce à mon expérience de
-la formalisation de la logique de séparation dans l'assistant de preuve
-Isabelle/HOL, je suis convaincu que la \hl{certification} est un axe
-intéressant. Par exemple, une version certifiée en Coq de l'algorithme de
-couverture de Karp et Miller a très récemment été proposée\footnote{ Thibault
-Hilaire, David Ilcinkas and Jérôme Leroux. \textit{A State-of-the-Art
-Karp-Miller Algorithm Certified in Coq}. À paraître à TACAS 2024.}. 
+théorèmes qui s'exécutent\fg.
 
 
 % L'objectif de ce projet est de concevoir de
@@ -199,26 +174,31 @@ des Systèmes et des Logiciels}). Mon projet de recherche est en adéquation ave
 les axes de recherche du groupe \emph{vérification de systèmes distribués
 critiques}.\\
 
-Mon projet de recherche se base l'étude et l'analyse de systèmes à états
+Mon projet de recherche se base sur l'étude et l'analyse de systèmes à états
 infinis, je pense que des collaborations avec Jean-Paul Bodeveix et Mamoun
 Filali seraient un atout. De plus, leur expertise sur les automates, ainsi que
 les extensions temporisées, permettrait d'étendre mon projet à d'autres
 formalismes que les réseaux de Petri.\\
 
-Sur les d'autres aspects théoriques, d'autres intéractions sont envisageables, comme
-avec Ralph Matthes étant donné son expertise sur des problèmes liés à
-l'utilisation de la logique et des graphes, ou bien, Jean-Baptiste Raclet et
-Martin Strecker sur la théorie des automates et des graphes. Toutes
-ces thématiques font partie de mes centres d'intérêt.\\
+Sur le plan théorique, d'autres intéractions sont envisageables, comme avec
+Ralph Matthes étant donné son expertise en logique et sur la théorie des
+graphes, ou bien, Jean-Baptiste Raclet et Martin Strecker sur la théorie des
+automates. Toutes ces thématiques font partie de mes centres d'intérêt.\\
 
-Pour finir, des interactions avec Érik Martin-Dorel et Jan-Georg Smaus seraient
-également un atout pour mon projet de recherche, de par sa dualité vérification
-formelle et raisonnent automatisé, mais aussi pour développer des aspects de
-certification.\\
+Grâce à mon expérience de la formalisation de la logique de séparation dans
+l'assistant de preuve Isabelle/HOL, je suis convaincu que la certification est
+un axe intéressant pour mon étendre mon projet de recherche. Par exemple, une
+version certifiée en Coq de l'algorithme de couverture de Karp et Miller a très
+récemment été proposée\footnote{ Thibault Hilaire, David Ilcinkas and Jérôme
+Leroux. \textit{A State-of-the-Art Karp-Miller Algorithm Certified in Coq}. À
+paraître à TACAS 2024.}. À ce titre, des interactions avec Érik Martin-Dorel et
+Jan-Georg Smaus seraient un atout pour développer ces aspects de certification,
+mais aussi pour répondre à la dualité vérification formelle et raisonnent automatisé de
+mon projet.\\
 
-Ce projet mêle également abondamment recherche théorique et développement
-logiciel, ce qui permettrait de renforcer l'équipe sur les aspects génie
-logiciel.\\
+Enfin, ce projet mêle également abondamment recherche théorique et
+développement logiciel, ce qui permettrait de renforcer l'équipe sur les aspects
+génie logiciel.\\
 
 
 
